@@ -4,8 +4,8 @@ let buddha = new Image();
 buddha.src = 'https://thebuddhapath.org/wp-content/uploads/2014/08/dzogchen_mandala_92-75x75.png';
 let ctx = display.getContext('2d');
 
-display.width = 4000;
-display.height = 3000;
+display.width = 3000;
+display.height = 2250;
 
 // Helper functions
 const randomInt = maxNum => {
@@ -16,16 +16,16 @@ const moveOne = (toChange, axis, increment) => {
   switch (axis) {
     case 'x':
       // if (toChange > display.width - 5 || toChange < 5) return toChange
-      if (toChange > display.width - 35 && increment) {
+      if (toChange > display.width - 37.5 && increment) {
         return toChange
-      } else if (toChange < 35 && !increment) {
+      } else if (toChange < 37.5 && !increment) {
         return toChange
       }
       break;
     default:    
-      if (toChange > display.height - 35 && increment) {
+      if (toChange > display.height - 37.5 && increment) {
         return toChange
-      } else if (toChange < 35 && !increment) {
+      } else if (toChange < 37.5 && !increment) {
         return toChange
       }
       break;
@@ -51,9 +51,9 @@ class Person {
   };
   render = function() {
     if (this.buddha) {
-      ctx.fillStyle = '#021fff79';
+      ctx.fillStyle = '#021fff66';
       ctx.beginPath();
-      ctx.arc(this.x, this.y, this.radius + 30, 0, 2 * Math.PI);
+      ctx.arc(this.x, this.y, this.radius + 50, 0, 2 * Math.PI);
       ctx.fill();
       ctx.drawImage(buddha, this.x - this.radius, this.y - this.radius);
     } else {
@@ -78,11 +78,11 @@ let people = [];
 let engage = null;
 
 const init = () => {
-  let population = parseInt(sampleSize.value) || 600;
+  let population = parseInt(sampleSize.value) || 500;
   for (let i = 0; i < population; i++) {
     people.push(new Person());
   }
-  people[0].buddha = true;
+  setTimeout(() => people[0].buddha = true, 500);
   engage = setInterval(loop, 40);
   startBtn.classList.add('hidden');
   stopBtn.classList.remove('hidden');
