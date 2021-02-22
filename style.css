@@ -15,6 +15,7 @@ main {
   height: 75%;
   width: 100vw;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -22,5 +23,5 @@ main {
 canvas {
   width: 700px;
   height: 350px;
-  border: 2px solid #0052b0;
+  border: 2px solid #404244;
 }
