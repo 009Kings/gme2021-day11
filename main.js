@@ -72,18 +72,30 @@ class Person {
   }
 }
 
-let population = 400;
-
+// Init!
 let people = [];
+let engage = null;
 
-for (let i = 0; i < population; i++) {
-  people.push(new Person());
+const init = () => {
+  let population = parseInt(sampleSize.value) || 600;
+  for (let i = 0; i < population; i++) {
+    people.push(new Person());
+  }
+  people[0].buddha = true;
+  engage = setInterval(loop, 40);
+  startBtn.classList.add('hidden');
+  stopBtn.classList.remove('hidden');
 }
 
-people[0].buddha = true;
-people[0].color = 'hotpink';
+const stop = () => {
+  clearInterval(engage);
+  engage = null;
+  people = [];
+  startBtn.classList.remove('hidden');
+  stopBtn.classList.add('hidden');
+}
 
-let movement = setInterval(() => {
+const loop = () => {
   ctx.clearRect(0, 0, display.width, display.height);
   people.forEach((person, i) => {
     person.move();
@@ -92,11 +104,11 @@ let movement = setInterval(() => {
       let other = people[j];
       let collision = person.checkCollision(other.x, other.y);
       if (collision && (person.buddha || other.buddha)) {
-        person.color = other.color = 'hotpink';
         person.buddha = other.buddha = true;
       }
     }
   });
-}, 40)
+}
 
-stopBtn.addEventListener('click', () => clearInterval(movement));
+startBtn.addEventListener('click', init);
+stopBtn.addEventListener('click', stop);
