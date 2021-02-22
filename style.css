@@ -16,13 +16,13 @@ main {
   width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 
 canvas {
-  width: 700px;
-  height: 350px;
+  width: 40em;
+  height: 30em;
   border: 2px solid #404244;
   background: #405238;
 }

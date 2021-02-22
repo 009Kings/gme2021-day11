@@ -1,10 +1,11 @@
 // Setup
+console.log('butts')
 let buddha = new Image();
 buddha.src = 'https://thebuddhapath.org/wp-content/uploads/2014/08/dzogchen_mandala_92-75x75.png';
 let ctx = display.getContext('2d');
 
 display.width = 4000;
-display.height = 2000;
+display.height = 3000;
 
 // Helper functions
 const randomInt = maxNum => {
